@@ -1,0 +1,70 @@
+{% load static %}
+
+<html lang="ja">
+<head class="masthead">
+  <meta charset="UTF-8">
+  <meta name="" content="">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon_ver_2.ico' %}">
+
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    {% block head %}{% endblock %}
+</head>
+<body>
+	<div id="wrapper" class="">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+          <div class="container">
+            <a class="navbar-brand" href="{% url 'match:home' %}">#me+</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="ddmenu">
+                <li><a href="">メニュー</a>
+                  <ul>
+                    <li><a href="{% url 'match:iine_me' %}">あなたへのいいね</a></li>
+                    <li><a href="{% url 'match:edit_plofile' %}">プロフィール編集</a></li>
+                    <li><a href="{% url 'match:point_member' %}">ポイント購入・月額会員加入</a></li>
+                    <li><a href="{% url 'match:chat' %}">メッセージ</a></li>
+                    <li><a href="{% url 'match:home' %}">ランダムマッチング</a></li>
+                    <li><a href="{% url 'match:home' %}">お問い合わせ</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <p class="text-black">Copyright &copy; Team D</p>
+          </div>
+<!--          {% if user.is_authenticated %}-->
+<!--          <ul class="nav-item adjust">-->
+<!--            <p>ログイン: {{ user.get_username }}</p>-->
+<!--            {% else %}-->
+<!--            <p>非ログインユーザ</p>-->
+<!--            {% endif %}-->
+<!--          </ul>-->
+
+        </nav>
+
+
+        {% block header%}{% endblock %}
+
+        {% if messages %}
+          <div class="container my-div-style">
+            <div class="row">
+              <ul class="messages" style="list-style: none;">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                  {{ message }}
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+
+  	</div>
+  </body>
+</html>

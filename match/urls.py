@@ -5,6 +5,7 @@ from . import views
 app_name = 'match'
 urlpatterns = [
     path('chat',views.ChatView.as_view(), name="chat"),
+    path('chat_list',views.ChatListView.as_view(), name="chat_list"),
     path('edit_plofile', views.Edit_plofileView.as_view(), name="edit_plofile"),
     path('', views.HomeView.as_view(), name="home"),
     path('iine_me', views.Iine_meView.as_view(), name="iine_me"),

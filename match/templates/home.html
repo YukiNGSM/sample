@@ -1,11 +1,29 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+
+<header>
+
+</header>
+
+{% block contents %}
 <head>
     <meta charset="UTF-8">
     <title>#me+</title>
 </head>
-<body>
-    <button name="sort">並び替え</button>
-    <button name="search">検索</button>
-</body>
-</html>
+
+<section class="">
+  <div class="container">
+    <div class="p-5">
+      <div class="col-lg-6">
+            <div class="portfolio-box-caption">
+                <button name="sort">並び替え</button>
+                <button name="search"><a href="{% url 'match:search' %}">検索</a></button>
+            </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% endblock %}
