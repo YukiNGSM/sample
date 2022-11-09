@@ -39,7 +39,7 @@ class InquiryForm(forms.Form):
         message = EmailMessage(subject=subject, body=message, from_email=from_email, to=to_list, cc=cc_list)
         message.send()
 
-class Edit_plofileForm(forms.Form):
+class Edit_profileForm(forms.Form):
     class Meta:
         model = Match
         fields = ('image', 'user_ID', 'gender', 'user_name', 'mailadress','password', 'age','hobby', 'address','annual_income', 'job', 'random', 'target', 'marry','introduce' )
@@ -111,3 +111,8 @@ class SearchForm(forms.Form):
         label='年齢',
         required = False,  # 必須ではない
     )
+
+class MemberForm(forms.Form):
+    name = forms.CharField(label='chat', max_length=30)
+
+

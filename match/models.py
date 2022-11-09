@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import CustomUser
+from accounts.models import MeplusUser
 
 # 日記モデル
 class Match(models.Model):
@@ -33,22 +33,25 @@ class Match(models.Model):
         ('無','無'),
     )
 
-    # ForeignKeyで登録されているユーザー以外の日記の登録はできなくする
+
+    # ForeignKeyで登録されているユーザー以外の登録はできなくする
     # 追加:主キー側から 削除:外部キー側から
-    user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT)
-    photo1 = models.ImageField(verbose_name='写真', blank=True, null=True)
+    user_ID = models.ForeignKey(MeplusUser, verbose_name='ユーザー', on_delete=models.PROTECT)
+    gender = models.IntegerField(choices=SELECT, verbose_name='性別')
     name = models.CharField(verbose_name='名前', max_length=40)
-    nickname = models.CharField(verbose_name='ニックネーム', max_length=40)
-    mail = models.EmailField(verbose_name='メールアドレス', blank=True,null=True)
+    user_name = models.CharField(verbose_name='ニックネーム', max_length=40)
+    mailaddress = models.EmailField(verbose_name='メールアドレス', blank=True,null=True)
     password = models.CharField(verbose_name='パスワード', max_length=20)
-    card = models.IntegerField(verbose_name='カード情報', blank=True, null=True)
+    # cardnum = models.CardNumberField(verbose_name='カード番号', blank=True, null=True)
+    # cardex = models.CardExpiryField(verbose_name='有効期限', blank=True, null=True)
+    # cardcode = SecurityCodeField(verbose_name='セキュリティコード(カード裏面印字されている下3桁または4桁)', blank=True, null=True)
     job = models.CharField(verbose_name='職業', blank=True, null=True, max_length=40)
-    sex = models.IntegerField(choices=SELECT, verbose_name='性別')
-    sex_your = models.IntegerField(choices=SELECT2, verbose_name='相手に求める性別')
-    money = models.IntegerField(choices=SELECT3, verbose_name='年収')
+    target = models.IntegerField(choices=SELECT2, verbose_name='相手に求める性別')
+    annual_income = models.IntegerField(choices=SELECT3, verbose_name='年収')
     marry = models.IntegerField(choices=SELECT4, verbose_name='結婚歴')
     hobby = models.CharField(verbose_name='趣味', max_length=40)
-    intro_me = models.CharField(verbose_name='自己紹介', max_length=40)
+    introduce = models.CharField(verbose_name='自己紹介', max_length=40)
+    image = models.ImageField(verbose_name='写真', blank=True, null=True)
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
 

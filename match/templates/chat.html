@@ -1,10 +1,27 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}#me+{% endblock %}
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>メッセージ</title>
 </head>
-<body>
+{% block contents %}
 
+  <!-- ▼LINE風ここから -->
+  <div class="line__container">
+    <!-- 会話相手の名前 -->
+    <div class="line__title">
+        {% match. %}
+    </div>
+
+    <<!-- ▼会話エリア scrollを外すと高さ固定解除 -->
+    <div class="line__contents scroll">
+    <!-- ここに吹き出しやスタンプのタグを追加していく -->
+    </div>
+    <!--　▲会話エリア ここまで -->
+  </div>
+  <!--　▲LINE風 ここまで -->
 </body>
 </html>

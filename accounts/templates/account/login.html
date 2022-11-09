@@ -1,0 +1,48 @@
+{% load static %}
+
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon_ver_2.ico' %}">
+</head>
+<style>
+h1{
+text-align: center;
+color: #DDA0DD;
+font-family: Century;
+font-size:7em;
+text-align:center;
+line-height:0.95em;
+font-weight:bold;
+color: transparent;
+background: repeating-linear-gradient(45deg,
+	#F5B090 0.1em 0.2em,
+	#FCD7A1 0.2em 0.3em,
+	#FFF9B1 0.3em 0.4em,
+	#A5D4AD 0.4em 0.5em,
+	#A3BCE2 0.5em 0.6em,
+	#A59ACA 0.7em 0.8em,
+	#CFA7CD 0.8em 0.9em);
+-webkit-background-clip: text;
+}
+</style>
+
+
+<body style="background-color:">
+<h1>#me+</h1>
+<form class="login" method="POST" action="{% url 'match:home' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <div align="center"><font size="8"><input type="text" name="mailadress" placeholder="メールアドレス" style="width: 350px; height: 40px;"></font></div><br>
+    <div align="center"><font size="8"><input type="password" name="password" placeholder="パスワード" style="width: 350px; height: 40px;"></font></div><br>
+    <div align="center"><button type="submit">ログイン</button></div>
+</form>
+<br><br><br><br><br><br>
+<div align="center"><a href="{% url 'account_reset_password' %}" class="btn" align="center">パスワードを忘れた方はこちら</a></div><br>
+<div align="center"><a href="{% url 'account_signup' %}" class="btn" align="center">新規登録</a></div>
+
+</body>
+</html>

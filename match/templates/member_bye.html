@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}#me+{% endblock %}
+{% block contents %}
 <head>
     <meta charset="UTF-8">
-    <title>月額会員退会</title>
+    <title>#me+</title>
 </head>
-<body>
-
-</body>
-</html>
+<section class="">
+  <div class="container">
+    <div class="p-5">
+      <div class="col-lg-6">
+            <div class="portfolio-box-caption">
+                <h1>退会申請</h1><br>
+                <ul class="member">
+                    <li>月額料金(3,500円)はカード引き落とし日に引き落としされます。</li>
+                    <li>月額会員退会は退会申請された翌月に退会完了(フリープラン:無料)になります。</li>
+                    <li>月の途中で退会されても、月末まで利用できます。</li>
+                    <li>退会をキャンセルしたい場合は、(メニュー→お問い合わせ)から詳細を記載して送信していただいて 対応させていただきます。</li>
+                    <button onclick="alertfunction">退会</button>
+                </ul>
+                <script>
+                    if (alertfunction) {
+                        alert('退会しました。')
+                    }
+                    else {
+                        alert('退会に失敗しました。')
+                    }
+                </script>
+                </li>
+              </ul>
+            </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

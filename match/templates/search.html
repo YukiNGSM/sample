@@ -5,6 +5,7 @@
 
 {% block header%}
 
+{% endblock %}
 {% block contents %}
 <div class="container">
     <div class="row">
@@ -13,16 +14,20 @@
                 {% csrf_token %}
                 <table class="table">
                     {{ form.as_table }}
-                    <label><input  type="text" name="freeword" value="#フリーワード(職業/趣味)を入力" size="27"></label><br>
-                    
+                    <ul class="freeword">
+                    <label><input  type="text" name="freeword" placeholder="#フリーワード(職業/趣味)を入力" size="27"></label><br>
+                    </ul>
+                    <ul class="age">
                     <label>年齢 : <input  type="number" name="age" value="age"></label><br>
-                    
+                    </ul>
+                    <ul class="jender">
                     <label for="gender" name="sex_checkbox">ジェンダー</label><br>
-                    <li>L <label><input  type="checkbox" value="gender"></label></li>
-                    <li>G <label><input  type="checkbox" value="gender"></label></li>
-                    <li>B <label><input  type="checkbox" value="gender"></label></li>
-                    <li>T <label><input  type="checkbox" value="gender"></label></li>
-                    <li>Q <label><input  type="checkbox" value="gender"></label></li>
+                    <li>L <label><input  type="checkbox" value="L" name="gender1"></label></li>
+                    <li>G <label><input  type="checkbox" value="G" name="gender2"></label></li>
+                    <li>B <label><input  type="checkbox" value="B" name="gender3"></label></li>
+                    <li>T <label><input  type="checkbox" value="T" name="gender4"></label></li>
+                    <li>Q <label><input  type="checkbox" value="Q" name="gender5"></label></li>
+                    </ul>
 
                     <li>年収 <label><select name="money">
                         <option value="list1">---</option>
@@ -38,152 +43,158 @@
                     <label for="id_selected_area"><b>北海道・東北</b></label>
                     <ul id="id_selected_area" class="select_area">
                     <li>
-                        <label><input type="checkbox" name="area" value="北海道" class="select_area">北海道</label>
+                        <label><input type="checkbox" name="area1" value="北海道" class="select_area">北海道</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="青森県" class="select_area">青森県</label>
+                        <label><input type="checkbox" name="area2" value="青森県" class="select_area">青森県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="秋田県" class="select_area">秋田県</label>
+                        <label><input type="checkbox" name="area3" value="秋田県" class="select_area">秋田県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="岩手県" class="select_area">岩手県</label>
+                        <label><input type="checkbox" name="area4" value="岩手県" class="select_area">岩手県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="山形県" class="select_area">山形県</label>
+                        <label><input type="checkbox" name="area5" value="山形県" class="select_area">山形県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="宮城県" class="select_area">宮城県</label>
+                        <label><input type="checkbox" name="area6" value="宮城県" class="select_area">宮城県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="福島県" class="select_area">福島県</label>
+                        <label><input type="checkbox" name="area7" value="福島県" class="select_area">福島県</label>
                     </li>
-                    <li>
-                        <label><input type="checkbox" name="area" value="秋田県" class="select_area">秋田県</label>
-                    </li>
+
                     <label for="id_selected_area"><b>関東</b></label>
                     <li>
-                        <label><input type="checkbox" name="area" value="栃木県" class="select_area">栃木県</label>
+                        <label><input type="checkbox" name="area8" value="栃木県" class="select_area">栃木県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="茨城県" class="select_area">茨城県</label>
+                        <label><input type="checkbox" name="area9" value="茨城県" class="select_area">茨城県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="群馬県" class="select_area">群馬県</label>
+                        <label><input type="checkbox" name="area10" value="群馬県" class="select_area">群馬県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="埼玉県" class="select_area">埼玉県</label>
+                        <label><input type="checkbox" name="area11" value="埼玉県" class="select_area">埼玉県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="千葉県" class="select_area">千葉県</label>
+                        <label><input type="checkbox" name="area12" value="千葉県" class="select_area">千葉県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="東京" class="select_area">東京</label>
+                        <label><input type="checkbox" name="area13" value="東京都" class="select_area">東京都</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="神奈川県" class="select_area">神奈川県</label>
+                        <label><input type="checkbox" name="area14" value="神奈川県" class="select_area">神奈川県</label>
                     </li>
                     <label for="id_selected_area"><b>中部</b></label>
                     <li>
-                        <label><input type="checkbox" name="area" value="新潟県" class="select_area">新潟県</label>
+                        <label><input type="checkbox" name="area15" value="新潟県" class="select_area">新潟県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="富山県" class="select_area">富山県</label>
+                        <label><input type="checkbox" name="area16" value="富山県" class="select_area">富山県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="福井県" class="select_area">福井県</label>
+                        <label><input type="checkbox" name="area17" value="福井県" class="select_area">福井県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="岐阜県" class="select_area">岐阜県</label>
+                        <label><input type="checkbox" name="area18" value="岐阜県" class="select_area">岐阜県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="長野県" class="select_area">長野県</label>
+                        <label><input type="checkbox" name="area19" value="石川県" class="select_area">石川県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="山梨県" class="select_area">山梨県</label>
+                        <label><input type="checkbox" name="area20" value="長野県" class="select_area">長野県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="愛知県" class="select_area">愛知県</label>
+                        <label><input type="checkbox" name="area21" value="山梨県" class="select_area">山梨県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="静岡県" class="select_area">静岡県</label>
-                    </li>
-                    <label for="id_selected_area"><b>関西</b></label>
-                    <li>
-                        <label><input type="checkbox" name="area" value="滋賀県" class="select_area">滋賀県</label>
+                        <label><input type="checkbox" name="area22" value="愛知県" class="select_area">愛知県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="三重県" class="select_area">三重県</label>
+                        <label><input type="checkbox" name="area23" value="静岡県" class="select_area">静岡県</label>
+                    </li>
+                    <label for="id_selected_area"><b>近畿</b></label>
+                    <li>
+                        <label><input type="checkbox" name="area24" value="滋賀県" class="select_area">滋賀県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="京都府" class="select_area">京都府</label>
+                        <label><input type="checkbox" name="area25" value="三重県" class="select_area">三重県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="大阪府" class="select_area">大阪府</label>
+                        <label><input type="checkbox" name="area26" value="京都府" class="select_area">京都府</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="奈良県" class="select_area">奈良県</label>
+                        <label><input type="checkbox" name="area27" value="大阪府" class="select_area">大阪府</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="兵庫県" class="select_area">兵庫県</label>
+                        <label><input type="checkbox" name="area28" value="奈良県" class="select_area">奈良県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="和歌山県" class="select_area">和歌山県</label>
+                        <label><input type="checkbox" name="area29" value="兵庫県" class="select_area">兵庫県</label>
+                    </li>
+                    <li>
+                        <label><input type="checkbox" name="area30" value="和歌山県" class="select_area">和歌山県</label>
                     </li>
                     <label for="id_selected_area"><b>中国</b></label>
                     <li>
-                        <label><input type="checkbox" name="area" value="鳥取県" class="select_area">鳥取県</label>
+                        <label><input type="checkbox" name="area31" value="鳥取県" class="select_area">鳥取県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="岡山県" class="select_area">岡山県</label>
+                        <label><input type="checkbox" name="area32" value="岡山県" class="select_area">岡山県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="広島県" class="select_area">広島県</label>
+                        <label><input type="checkbox" name="area33" value="広島県" class="select_area">広島県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="山口県" class="select_area">山口県</label>
+                        <label><input type="checkbox" name="area34" value="山口県" class="select_area">山口県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="島根県" class="select_area">島根県</label>
-                    </li>
-                    <li>
-                        <label><input type="checkbox" name="area" value="山口県" class="select_area">山口県</label>
+                        <label><input type="checkbox" name="area35" value="島根県" class="select_area">島根県</label>
                     </li>
                     <label for="id_selected_area"><b>四国</b></label>
                     <li>
-                        <label><input type="checkbox" name="area" value="香川県" class="select_area">香川県</label>
+                        <label><input type="checkbox" name="area36" value="香川県" class="select_area">香川県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="徳島県" class="select_area">徳島県</label>
+                        <label><input type="checkbox" name="area37" value="徳島県" class="select_area">徳島県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="高知県" class="select_area">高知県</label>
+                        <label><input type="checkbox" name="area38" value="高知県" class="select_area">高知県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="愛媛県" class="select_area">愛媛県</label>
+                        <label><input type="checkbox" name="area39" value="愛媛県" class="select_area">愛媛県</label>
                     </li>
-                    <label for="id_selected_area"><b>九州</b></label>
+                    <label for="id_selected_area"><b>九州・沖縄</b></label>
                     <li>
-                        <label><input type="checkbox" name="area" value="福岡県" class="select_area">福岡県</label>
-                    </li>
-                    <li>
-                        <label><input type="checkbox" name="area" value="佐賀県" class="select_area">佐賀県</label>
+                        <label><input type="checkbox" name="area40" value="福岡県" class="select_area">福岡県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="長崎県" class="select_area">長崎県</label>
+                        <label><input type="checkbox" name="area41" value="佐賀県" class="select_area">佐賀県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="熊本県" class="select_area">熊本県</label>
+                        <label><input type="checkbox" name="area42" value="長崎県" class="select_area">長崎県</label>
                     </li>
                     <li>
-                        <label><input type="checkbox" name="area" value="大分県" class="select_area">大分県</label>
+                        <label><input type="checkbox" name="area43" value="熊本県" class="select_area">熊本県</label>
                     </li>
-
+                    <li>
+                        <label><input type="checkbox" name="area44" value="鹿児島県" class="select_area">鹿児島県</label>
+                    </li>
+                    <li>
+                        <label><input type="checkbox" name="area45" value="宮崎県" class="select_area">宮崎県</label>
+                    </li>
+                    <li>
+                        <label><input type="checkbox" name="area46" value="大分県" class="select_area">大分県</label>
+                    </li>
+                    <li>
+                        <label><input type="checkbox" name="area47" value="沖縄県" class="select_area">沖縄県</label>
+                    </li>
                         <button name="search"><a href="{% url 'match:home' %}">検索</a></button>
+                    </ul>
                 </table>
             </form>
         </div>
     </div>
 </div>
-{% endblock %}
 {% endblock %}

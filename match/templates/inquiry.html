@@ -1,10 +1,43 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>お問い合わせ</title>
 </head>
 <body>
-  </form>
+    <h1>お問い合わせ</h1><br>
+    <h3>ご質問やご要望ございましたら、お気軽にお問い合わせください。</h3>
 </body>
 </html>
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style">
+            <form method="post">
+                {% csrf_token %}
+
+                {{ form.non_field_errors }}
+
+                {% for field in form %}
+                    <div class="form-group row">
+                        <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">
+                            <strong>{{ field.label_tag }}</strong>
+                        </label>
+                        <div class="col-sm-8">
+                            {{ field }}
+                            {{ field.errors }}
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="offset-sm-4 col-sm-8">
+                    <button class="btn btn-primary" type="submit">送信</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

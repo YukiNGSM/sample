@@ -1,29 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block header %}
-
-<header>
-
-</header>
-
+{% block title %}#me+{% endblock %}
 {% block contents %}
 <head>
     <meta charset="UTF-8">
     <title>#me+</title>
 </head>
-
 <section class="">
   <div class="container">
     <div class="p-5">
       <div class="col-lg-6">
             <div class="portfolio-box-caption">
-                <button name="sort">並び替え</button>
                 <button name="search"><a href="{% url 'match:search' %}">検索</a></button>
+                <ul class="sort">
+                <li><a href="#">並び替え</a>
+                  <ul>
+                    <li><input type="radio" name="sort" value="iine">いいね数</li>
+                    <li><input type="radio" name="sort" value="new">新着順</li>
+                    <li><input type="radio" name="sort" value="match_counts">マッチ回数</li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                      <a href="{% url 'match:member'%}">月額会員に加入する</a>
+                  </li>
+                  {% endif %}
+
+                  </ul>
+                </li>
+              </ul>
             </div>
       </div>
     </div>
   </div>
 </section>
-{% endblock %}
 {% endblock %}

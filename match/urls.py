@@ -5,8 +5,8 @@ from . import views
 app_name = 'match'
 urlpatterns = [
     path('chat',views.ChatView.as_view(), name="chat"),
-    path('chat_list',views.ChatListView.as_view(), name="chat_list"),
-    path('edit_plofile', views.Edit_plofileView.as_view(), name="edit_plofile"),
+    path('chat_list',views.Chat_listView.as_view(), name="chat_list"),
+    path('edit_profile', views.Edit_profileView.as_view(), name="edit_profile"),
     path('', views.HomeView.as_view(), name="home"),
     path('iine_me', views.Iine_meView.as_view(), name="iine_me"),
     path('inquiry', views.InquiryView.as_view(), name="inquiry"),
@@ -18,5 +18,5 @@ urlpatterns = [
     path('report', views.ReportView.as_view(), name="report"),
     path('search', views.SearchView.as_view(), name="search"),
     path('stop_service', views.Stop_serviceView.as_view(), name="stop_service"),
-    path('term_of_service', views.Term_of_serviceView.as_view(), name="term_of_service"),
+    path('terms_of_service', views.Terms_of_serviceView.as_view(), name="terms_of_service"),
 ]

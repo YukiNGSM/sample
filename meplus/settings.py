@@ -1,24 +1,16 @@
-from pathlib import Path
 import os
+
+from pathlib import Path
 from django.contrib.messages import constants as messages
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+SECRET_KEY = 'django-insecure-woi%1a89ox77klprfn*a$y%=s8+hq*k)t&u&7&ti&m&@xj=k1_'
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t7b7tf!kf14v@)ai6qj)@8ue5cp!2e@ibm&csy0cw4uwrtv@yf'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -29,11 +21,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'match.apps.MatchConfig',
-    'account.apps.AccountConfig',
+    'accounts.apps.AccountsConfig',
     'operation.apps.OperationConfig',
+    # 'credicards.apps.CreditcardsConfig',
 
     'django.contrib.sites',
     'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django_bootstrap5',
 
 ]
@@ -126,9 +121,87 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'account.CustomUser'
+MESSAGE_TAGS = {
+    messages.ERROR: 'alert alert-denger',
+    messages.WARNING: 'alert alert-warning',
+    messages.SUCCESS: 'alert alert-success',
+    messages.INFO: 'alert alert-info',
+}
+
+AUTH_USER_MODEL ='accounts.MeplusUser'
+
+# ロギング設定
+LOGGING = {
+    'version': 1, #1固定
+    'disable_existing_loggers': False,
+
+    # ロガーの設定
+    'Loggers': {
+        # Djangoが利用するロガー
+        'django': {
+            'handlers':['console'],
+            'level':'INFO',
+        },
+        # fearアプリケーションが利用するロガー
+        'fear': {
+            'handlers':['console'],
+            'level':'DEBUG',
+        },
+    },
+
+    # ハンドラの設定
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'dev'
+        },
+    },
+
+    # フォーマッタの設定
+    'formatters': {
+        'dev': {
+            'format': '\t'.join([
+                '%(asctime)s',
+                '[%(levelname)s]',
+                '%(pathtime)s(Line:%(lineno)d)',
+                '%(message)s'
+            ])
+        }
+    }
+}
+
+
+# django-allauthで利用するdjango.contrib.sitesを使うためにサイト識別用IDを設定
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    # 一般ユーザー用(メールアドレス認証)
+    'allauth.accounts.auth_backends.AuthenticationBackend',
+    # 管理サイト用(メールアドレス認証)
+    'django.contrib.auth.backends.ModelBackend'
+)
+# メールアドレス認証に変更する設定
+ACCOUNT_AUTHENTICATION_METHOD ='email'
+ACCOUNT_USERNAME_REQUIRED = False
+
+# サインアップにメールアドレス確認をはさむように設定
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+
+# # ログイン/ログアウト後の遷移先を設定
+# LOGIN_REDIRECT_URL = 'match:chat_list'
+# ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+
+# ログアウトリンク一発でログアウトする設定
+ACCOUNT_LOGOUT_ON_GET = True
+
+# django-allauthが送信するメール件名に自動付与される接頭辞をブランクにする設定
+ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
+
+# デフォルトのメール送信先の設定
+DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL')
+
+MEDIA_URL = '/media/'

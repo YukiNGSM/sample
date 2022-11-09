@@ -1,10 +1,55 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}#me+{% endblock %}
+{% block contents %}
 <head>
     <meta charset="UTF-8">
-    <title>料金プラン</title>
+    <title>#me+</title>
 </head>
-<body>
+<section class="">
+  <div class="container">
+    <div class="p-5">
+      <div class="col-lg-6">
+            <div class="portfolio-box-caption">
+                <h1>料金プラン</h1><br>
+                <h2>(※カードのみのお支払い)</h2>
+                <ul class="point">
+                    <h3>フリープラン(無料)</h3>
+                    <p>メッセージ: 1通まで</p>
+                    <p>ランダムマッチング: 5通</p>
+                    <p>並び替え機能: 利用不可</p>
+                    <p>絞り込み: 無制限</p>
+                    <button name="point"><a href="{% url 'match:point_free' %}">¥200で100pt購入する</a></button>
+                </ul>
+                <ul class="member">
+                    <h3>有料プラン(1ヶ月)</h3><br>
+                    <b>¥3,500</b>
+                    <p>メッセージ: 無制限</p>
+                    <p>ランダムマッチング: 5通</p>
+                    <p>並び替え機能: 利用可能</p>
+                    <p>絞り込み: 無制限</p>
+                    <button name="member"><a href="{% url 'match:member' %}">加入</a></button>
+                </ul>
 
-</body>
-</html>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <ul class="member">
+                        <h3>有料プラン(1ヶ月)</h3><br>
+                        <b>¥3,500</b>
+                        <p>メッセージ: 無制限</p>
+                        <p>ランダムマッチング: 5通</p>
+                        <p>並び替え機能: 利用可能</p>
+                        <p>絞り込み: 無制限</p>
+                        <button name="member"><a href="{% url 'match:member_bye' %}">退会</a></button>
+                    </ul>
+                  </li>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
