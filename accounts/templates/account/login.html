@@ -1,4 +1,5 @@
 {% load static %}
+{% load django_bootstrap5 %}
 
 <html lang="ja">
 <head>
@@ -28,21 +29,21 @@ background: repeating-linear-gradient(45deg,
 }
 </style>
 
-
 <body style="background-color:">
 <h1>#me+</h1>
-<form class="login" method="POST" action="{% url 'match:home' %}">
+<form class="login" method="post" action="{% url 'account_login' %}">
     {% csrf_token %}
+    {% bootstrap_form form %}
+
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
-    <div align="center"><font size="8"><input type="text" name="mailadress" placeholder="メールアドレス" style="width: 350px; height: 40px;"></font></div><br>
-    <div align="center"><font size="8"><input type="password" name="password" placeholder="パスワード" style="width: 350px; height: 40px;"></font></div><br>
+<!--    <div align="center"><font size="8"><input type="text" name="mailadress" placeholder="メールアドレス" style="width: 350px; height: 40px;"></font></div><br>-->
+<!--    <div align="center"><font size="8"><input type="password" name="password" placeholder="パスワード" style="width: 350px; height: 40px;"></font></div><br>-->
     <div align="center"><button type="submit">ログイン</button></div>
 </form>
 <br><br><br><br><br><br>
 <div align="center"><a href="{% url 'account_reset_password' %}" class="btn" align="center">パスワードを忘れた方はこちら</a></div><br>
 <div align="center"><a href="{% url 'account_signup' %}" class="btn" align="center">新規登録</a></div>
-
 </body>
 </html>

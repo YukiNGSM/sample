@@ -1,9 +1,6 @@
-{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}#me+ 新規登録{% endblock %}
-
-{% block active_diary_list %}active{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -13,9 +10,8 @@
                 {% csrf_token %}
                 <table class="table">
                     {{ form.as_table }}
-                    <label><input  type="checkbox" name="terms" value="同意する" required></label>
-                    <button class="btn btn-register" type="submit">利用規約画面</button>
-
+                    <button class="btn btn-register" type="submit" required>利用規約画面</button>
+                    <label><input type="checkbox" name="terms" value="同意する" required></label>
                 </table>
                 <button class="btn btn-primary" type="submit">マッチングを始める</button>
             </form>
