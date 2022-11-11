@@ -1,7 +1,7 @@
 import os
 from django import forms
 from django.core.mail import EmailMessage
-from .models import Match
+# from .models import Match
 
 class InquiryForm(forms.Form):
     name = forms.CharField(label='お名前', max_length=30)
@@ -39,63 +39,63 @@ class InquiryForm(forms.Form):
         message = EmailMessage(subject=subject, body=message, from_email=from_email, to=to_list, cc=cc_list)
         message.send()
 
-class Edit_profileForm(forms.Form):
-    class Meta:
-        model = Match
-        fields = ('image', 'user_ID', 'gender', 'user_name', 'mailadress','password', 'age','hobby', 'address','annual_income', 'job', 'random', 'target', 'marry','introduce' )
+# class Edit_profileForm(forms.Form):
+#     class Meta:
+#         model = Match
+#         fields = ('image', 'user_ID', 'gender', 'user_name', 'mailadress','password', 'age','hobby', 'address','annual_income', 'job', 'random', 'target', 'marry','introduce' )
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         for field in self.fields.values():
+#             field.widget.attrs['class'] = 'form-control'
+#
+#             class ChoiceForm(forms.Form):
+#                 selected_time = forms.fields.ChoiceField(
+#                     choices=(
+#                         ('mens', 'wemens'),
+#                     ),
+#                 label = '性別',
+#                     required = True,
+#                     widget = forms.widgets.RadioSelect
+#                 )
+#
+#
+#             self.fields['user_name'].widget.attrs['class'] = 'form-control col-9'
+#             self.fields['user_name'].widget.attrs['placeholder'] = '名前'
+#
+#             self.fields['mailadress'].widget.attrs['class'] = 'form-control col-9'
+#             self.fields['mailadress'].widget.attrs['placeholder'] = 'メールアドレス'
+#
+#             self.fields['password'].widget.attrs['class'] = 'form-control col-9'
+#             self.fields['password'].widget.attrs['placeholder'] = 'パスワード'
+#
+#             self.fields['age'].widget.attrs['class'] = 'form-control col-9'
+#             self.fields['age'].widget.attrs['placeholder'] = '年齢'
+#
+#             self.fields['hobby'].widget.attrs['class'] = 'form-control col-9'
+#             self.fields['hobby'].widget.attrs['placeholder'] = '趣味'
+#
+#             self.fields['address'].widget.attrs['class'] = 'form-control col-9'
+#             self.fields['address'].widget.attrs['placeholder'] = '住所'
+#
+#             self.fields['annual_income'].widget.attrs['class'] = 'form-control col-9'
+#             self.fields['annual_income'].widget.attrs['placeholder'] = '年収'
+#
+#             self.fields['job'].widget.attrs['class'] = 'form-control col-9'
+#             self.fields['job'].widget.attrs['placeholder'] = '職業'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs['class'] = 'form-control'
-
-            class ChoiceForm(forms.Form):
-                selected_time = forms.fields.ChoiceField(
-                    choices=(
-                        ('mens', 'wemens'),
-                    ),
-                label = '性別',
-                    required = True,
-                    widget = forms.widgets.RadioSelect
-                )
-
-
-            self.fields['user_name'].widget.attrs['class'] = 'form-control col-9'
-            self.fields['user_name'].widget.attrs['placeholder'] = '名前'
-
-            self.fields['mailadress'].widget.attrs['class'] = 'form-control col-9'
-            self.fields['mailadress'].widget.attrs['placeholder'] = 'メールアドレス'
-
-            self.fields['password'].widget.attrs['class'] = 'form-control col-9'
-            self.fields['password'].widget.attrs['placeholder'] = 'パスワード'
-
-            self.fields['age'].widget.attrs['class'] = 'form-control col-9'
-            self.fields['age'].widget.attrs['placeholder'] = '年齢'
-
-            self.fields['hobby'].widget.attrs['class'] = 'form-control col-9'
-            self.fields['hobby'].widget.attrs['placeholder'] = '趣味'
-
-            self.fields['address'].widget.attrs['class'] = 'form-control col-9'
-            self.fields['address'].widget.attrs['placeholder'] = '住所'
-
-            self.fields['annual_income'].widget.attrs['class'] = 'form-control col-9'
-            self.fields['annual_income'].widget.attrs['placeholder'] = '年収'
-
-            self.fields['job'].widget.attrs['class'] = 'form-control col-9'
-            self.fields['job'].widget.attrs['placeholder'] = '職業'
-
-            class ChoiceForm(forms.Form):
-                selected_time = forms.fields.ChoiceField(
-                    choices=(
-                        ('○', '☓'),
-                    ),
-                label = '結婚歴',
-                    required = True,
-                    widget = forms.widgets.RadioSelect
-                )
-
-            self.fields['introduce'].widget.attrs['class'] = 'form-control col-20'
-            self.fields['introduce'].widget.attrs['placeholder'] = '自己紹介'
+            # class ChoiceForm(forms.Form):
+            #     selected_time = forms.fields.ChoiceField(
+            #         choices=(
+            #             ('○', '☓'),
+            #         ),
+            #     label = '結婚歴',
+            #         required = True,
+            #         widget = forms.widgets.RadioSelect
+            #     )
+            #
+            # self.fields['introduce'].widget.attrs['class'] = 'form-control col-20'
+            # self.fields['introduce'].widget.attrs['placeholder'] = '自己紹介'
 
 class ChatForm(forms.Form):
     name = forms.CharField(label='chat', max_length=30)
@@ -129,11 +129,45 @@ class AccountForm(forms.ModelForm):
         # フィールド指定
         fields = ('username','email','password')
         # フィールド名指定
-        labels = {'username':"ユーザー名",'email':"メール"}
+        labels = {'username':"(必須)ニックネーム",'email':"(必須)メール",'password':"(必須)パスワード"}
 
 class AddAccountForm(forms.ModelForm):
     class Meta():
         # モデルクラスを指定
         model = Account
-        fields = ('last_name','first_name','account_image','job')
-        labels = {'last_name':"苗字",'first_name':"名前",'account_image':"写真アップロード",'job':"職業"}
+        fields = (
+            'name',
+            'age',
+            'address',
+            'cardnum',
+            'cardyear',
+            'cardmonth',
+            'cardcode',
+            'job',
+            'image',
+            'gender',
+            'target',
+            'annual_income',
+            'marry',
+            'hobby',
+            'introduce',
+            )
+
+        #verboseと同義
+        labels = {
+            'name':"(必須)本名",
+            'age':"(必須)年齢",
+            'address': "(必須)住所",
+            'cardnum': "(必須)カード番号",
+            'cardyear': "有効期限(年)",
+            'cardmonth': "有効期限(月)",
+            'cardcode': "セキュリティコード(カード裏面印字されている下3桁または4桁)",
+            'job':"職業",
+            'image':"(必須)プロフィール画像",
+            'gender': "(必須)性別",
+            'target': "(必須)恋愛対象",
+            'annual_income': "年収",
+            'marry':"結婚歴",
+            'hobby': "趣味",
+            'introduce': "自己紹介",
+            }

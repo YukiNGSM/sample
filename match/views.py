@@ -1,6 +1,7 @@
 from django.views import generic
-from .models import Match
-from .forms import InquiryForm ,Edit_profileForm ,ChatForm ,SearchForm, MemberForm
+# from .models import Match
+from .forms import InquiryForm
+from .forms import ChatForm ,SearchForm, MemberForm
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from .forms import AccountForm, AddAccountForm # ユーザーアカウントフォーム
@@ -15,11 +16,11 @@ class ChatView(generic.TemplateView):
 class Chat_listView(generic.TemplateView):
     template_name = "chat_list.html"
 
-class Edit_profileView(generic.FormView):
-    model = Match
-    template_name = "edit_profile.html"
-    form_class = Edit_profileForm
-    success_url = reverse_lazy('match:edit_profile')
+# class Edit_profileView(generic.FormView):
+#     model = Match
+#     template_name = "edit_profile.html"
+#     form_class = Edit_profileForm
+#     success_url = reverse_lazy('match:edit_profile')
 
 class HomeView(generic.TemplateView):
     template_name = "home.html"
