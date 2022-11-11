@@ -19,4 +19,6 @@ urlpatterns = [
     path('search', views.SearchView.as_view(), name="search"),
     path('stop_service', views.Stop_serviceView.as_view(), name="stop_service"),
     path('terms_of_service', views.Terms_of_serviceView.as_view(), name="terms_of_service"),
+
+    path('', views.AccountRegistration.as_view(), name='signup'),
 ]
