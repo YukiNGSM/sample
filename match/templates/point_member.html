@@ -20,7 +20,7 @@
                     <p>ランダムマッチング: 5通</p>
                     <p>並び替え機能: 利用不可</p>
                     <p>絞り込み: 無制限</p>
-                    <button name="point"><a href="{% url 'match:point_free' %}">¥200で100pt購入する</a></button>
+                    <button name="point" class="freeplan1"><a href="{% url 'match:point_free' %}">¥200で100pt購入する</a></button>
                 </ul>
                 <ul class="member">
                     <h3>有料プラン(1ヶ月)</h3><br>
@@ -29,7 +29,7 @@
                     <p>ランダムマッチング: 5通</p>
                     <p>並び替え機能: 利用可能</p>
                     <p>絞り込み: 無制限</p>
-                    <button name="member"><a href="{% url 'match:member' %}">加入</a></button>
+                    <button name="member" class="freeplan1"><a href="{% url 'match:member' %}">加入</a></button>
                 </ul>
 
                   {% if user.is_authenticated %}

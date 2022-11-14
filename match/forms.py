@@ -121,7 +121,7 @@ from .models import Account
 # フォームクラス作成
 class AccountForm(forms.ModelForm):
     # パスワード入力：非表示対応
-    password = forms.CharField(widget=forms.PasswordInput(),label="パスワード")
+    password = forms.CharField(widget=forms.PasswordInput(),label="(必須)パスワード")
 
     class Meta():
         # ユーザー認証
@@ -129,14 +129,15 @@ class AccountForm(forms.ModelForm):
         # フィールド指定
         fields = ('username','email','password')
         # フィールド名指定
-        labels = {'username':"(必須)ニックネーム",'email':"(必須)メール",'password':"(必須)パスワード"}
+        labels = {'username':"(必須)ニックネーム",'email':"(必須)メール"}
 
 class AddAccountForm(forms.ModelForm):
     class Meta():
         # モデルクラスを指定
         model = Account
         fields = (
-            'name',
+            'first_name',
+            'last_name',
             'age',
             'address',
             'cardnum',
@@ -155,7 +156,51 @@ class AddAccountForm(forms.ModelForm):
 
         #verboseと同義
         labels = {
-            'name':"(必須)本名",
+            'first_name':"(必須)名前",
+            'last_name': "(必須)苗字",
+            'age':"(必須)年齢",
+            'address': "(必須)住所",
+            'cardnum': "(必須)カード番号",
+            'cardyear': "有効期限(年)",
+            'cardmonth': "有効期限(月)",
+            'cardcode': "セキュリティコード(カード裏面印字されている下3桁または4桁)",
+            'job':"職業",
+            'image':"(必須)プロフィール画像",
+            'gender': "(必須)性別",
+            'target': "(必須)恋愛対象",
+            'annual_income': "年収",
+            'marry':"結婚歴",
+            'hobby': "趣味",
+            'introduce': "自己紹介",
+            }
+
+class Edit_profileForm(forms.ModelForm):
+    class Meta():
+
+        model = Account
+        fields = (
+            'first_name',
+            'last_name',
+            'age',
+            'address',
+            'cardnum',
+            'cardyear',
+            'cardmonth',
+            'cardcode',
+            'job',
+            'image',
+            'gender',
+            'target',
+            'annual_income',
+            'marry',
+            'hobby',
+            'introduce',
+            )
+
+        #verboseと同義
+        labels = {
+            'first_name':"(必須)名前",
+            'last_name': "(必須)苗字",
             'age':"(必須)年齢",
             'address': "(必須)住所",
             'cardnum': "(必須)カード番号",

@@ -146,8 +146,8 @@ LOGGING = {
             'handlers':['console'],
             'level':'INFO',
         },
-        # fearアプリケーションが利用するロガー
-        'fear': {
+        # matchアプリケーションが利用するロガー
+        'match': {
             'handlers':['console'],
             'level':'DEBUG',
         },
@@ -193,13 +193,13 @@ LOGGING = {
 # ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # ACCOUNT_EMAIL_REQUIRED = True
 #
-# # # ログイン/ログアウト後の遷移先を設定
-# # LOGIN_REDIRECT_URL = 'match:home'
-# # ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+# ログイン/ログアウト後の遷移先を設定
+LOGIN_REDIRECT_URL = 'match:home'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'match:login'
 #
-# # ログアウトリンク一発でログアウトする設定
-# ACCOUNT_LOGOUT_ON_GET = True
-#
+# ログアウトリンク一発でログアウトする設定
+ACCOUNT_LOGOUT_ON_GET = True
+
 # # django-allauthが送信するメール件名に自動付与される接頭辞をブランクにする設定
 # ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 #
@@ -209,7 +209,7 @@ LOGGING = {
 MEDIA_URL = '/media/'
 
 # 画像を保存する先の指定
-MEDIA＿ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # PASSWORD_HASHERS = [
 #     "django.contrib.auth.hashers.Argon2PasswordHasher",

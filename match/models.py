@@ -93,7 +93,8 @@ class Account(models.Model):
     #     def delete(self, using=None, keep_parents=False):
     #         super(Image, self).delete()
 
-    name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     age = models.IntegerField()
     address = models.CharField(max_length=40)
     cardnum = models.IntegerField()
@@ -101,7 +102,7 @@ class Account(models.Model):
     cardyear = models.IntegerField()
     cardcode = models.IntegerField()
     job = models.CharField(max_length=40, blank=True, null=True)
-    image = models.ImageField(upload_to="img/")
+    image = models.ImageField(blank=True, null=False)
     gender = models.IntegerField(choices=SELECT)
     target = models.IntegerField(choices=SELECT2)
     annual_income = models.IntegerField(choices=SELECT3, blank=True, null=True)

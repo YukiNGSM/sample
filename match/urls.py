@@ -6,7 +6,7 @@ app_name = 'match'
 urlpatterns = [
     path('chat',views.ChatView.as_view(), name="chat"),
     path('chat_list',views.Chat_listView.as_view(), name="chat_list"),
-    # path('edit_profile', views.Edit_profileView.as_view(), name="edit_profile"),
+    path('edit_profile', views.Edit_profileView.as_view(), name="edit_profile"),
     path('home', views.HomeView.as_view(), name="home"),
     path('iine_me', views.Iine_meView.as_view(), name="iine_me"),
     path('inquiry', views.InquiryView.as_view(), name="inquiry"),
@@ -20,5 +20,7 @@ urlpatterns = [
     path('stop_service', views.Stop_serviceView.as_view(), name="stop_service"),
     path('terms_of_service', views.Terms_of_serviceView.as_view(), name="terms_of_service"),
 
-    path('', views.AccountRegistration.as_view(), name='signup'),
+    path('signup', views.AccountRegistration.as_view(), name='signup'),
+    path('',views.LoginView.as_view(), name="login"),
+    # path("logout/", views.LogoutView.as_view(), name="logout"),
 ]

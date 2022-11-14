@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block title %}#me+{% endblock %}
-<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>メッセージ</title>
@@ -13,7 +12,6 @@
   <div class="line__container">
     <!-- 会話相手の名前 -->
     <div class="line__title">
-        {% match. %}
     </div>
 
     <<!-- ▼会話エリア scrollを外すと高さ固定解除 -->
@@ -24,4 +22,4 @@
   </div>
   <!--　▲LINE風 ここまで -->
 </body>
-</html>
+{% endblock %}

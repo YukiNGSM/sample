@@ -1,69 +1,5 @@
 @charset "UTF-8";
 
-.sample {
-  margin-top: 4px;
-  width: 100%;
-}
-
-.sample::part(button) {
-  border: 1px solid rgba(0,0,0,.12);
-  border-radius: 8px;
-  color: rgba(0,0,0,0.89);
-  display: flex;
-  font-weight: bold;
-  margin-bottom: 8px;
-  padding: 8px 4px 8px 8px;
-  width: 100%;
-}
-
-.sample::part(button):hover {
-  background-color: #F2F2F2;
-  cursor: pointer;
-}
-
-.sample::part(selected-value) {
-  flex-grow: 1;
-  text-align: left;
-}
-
-.sample::part(listbox) {
-  border: none;
-  height: 120px;
-  margin-top: 8px;
-  overflow: auto;
-  padding: 8px 4px;
-}
-
-.samplelabel {
-  font-size: 14px;
-  color: rgba(0,0,0,0.36);
-  margin: 0 4px;
-}
-
-.samplelabel:nth-child(n+2){
-  margin-top: 16px;
-}
-
-.sampleinner {
-  display: grid;
-  gap: 4px;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-option {
-  padding: 4px 4px;
-  font-size: 16px;
-  color: rgba(0,0,0,0.89);
-}
-
-.sample option:hover {
-  background-color: #EAF3FB;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-
-Resources
 
 ul.ddmenu {
     margin: 0px;
@@ -74,7 +10,7 @@ ul.ddmenu li {
    width: 250px;           /* メニュー項目の横幅(125px) */
    display: inline-block;  /* ★1:横並びに配置する */
    list-style-type: none;  /* ★2:リストの先頭記号を消す */
-   position: relative;     /* ★3:サブメニュー表示の基準位置にする */
+   position: relative;     /* ★3:並び替え表示の基準位置にする */
 }
 ul.ddmenu a {
    background-color: #FFA500; /* メニュー項目の背景色() */
@@ -88,6 +24,239 @@ ul.ddmenu a {
 ul.ddmenu a:hover {
    background-color: #FFA500; /* メニュー項目にマウスが載ったときの背景色(淡いピンク) */
    color: white;            /* メニュー項目にマウスが載ったときの文字色(濃い赤色) */
+}
+
+/* -------------------- */
+/* ▼サブメニューの装飾 */
+/* -------------------- */
+ul.ddmenu ul {
+   display: none;       /* ★1:標準では非表示にする */
+   margin: 0px;         /* ★2:並び替え外側の余白(ゼロ) */
+   padding: 0px;        /* ★3:並び替え内側の余白(ゼロ) */
+   position: absolute;  /* ★4:絶対配置にする */
+}
+
+/* ---------------------------------- */
+/* ▼サブメニューがある場合に開く処理 */   /* ※サブメニューが1階層しか存在しない場合の記述 */
+/* ---------------------------------- */
+ul.ddmenu li:hover ul {
+   display: block;      /* ★5:マウスポインタが載っている項目の内部にあるリストを表示する */
+}
+
+ul.ddmenu ul li {   /* ※A */
+   width: 250px;               /* サブメニュー1項目の横幅(135px) */
+   border-top: 1px solid white; /* 項目上側の枠線(ピンク色で1pxの実線) */
+}
+ul.ddmenu ul li a {   /* ※B */
+   line-height: 35px;   /* サブメニュー1項目の高さ(35px) */
+   text-align: left;    /* 文字列の配置(左寄せ) */
+   padding-left: 5px;   /* 文字列前方の余白(5px) */
+   font-weight: normal; /* 太字にはしない */
+}
+ul.ddmenu ul li a:hover {   /* ※C */
+   background-color: #FFE4C4; /* サブメニュー項目にマウスが載ったときの背景色() */
+   color: #005500;            /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
+}
+
+/* 並び替えの装飾 */
+ul.sort {
+    margin: 0px;
+    padding: 0px 0px 0px 15px;
+    background-color: #FF8C00;
+}
+ul.sort li {
+   width: 250px;           /* メニュー項目の横幅(125px) */
+   display: inline-block;  /* ★1:横並びに配置する */
+   list-style-type: none;  /* ★2:リストの先頭記号を消す */
+   position: relative;     /* ★3:並び替え表示の基準位置にする */
+}
+ul.sort a {
+   background-color: #ff7f50; /* メニュー項目の背景色(コーラル) */
+   color: white;              /* メニュー項目の文字色(白色) */
+   line-height: 40px;         /* メニュー項目のリンクの高さ(40px) */
+   text-align: center;        /* メインメニューの文字列の配置(中央寄せ) */
+   text-decoration: none;     /* メニュー項目の装飾(下線を消す) */
+   font-weight: bold;         /* 太字にする */
+   display: block;            /* ★4:項目内全域をリンク可能にする */
+}
+ul.sort a:hover {
+   background-color: #FFA500; /* メニュー項目にマウスが載ったときの背景色(淡いピンク) */
+   color: white;            /* メニュー項目にマウスが載ったときの文字色(濃い赤色) */
+}
+
+/* -------------------- */
+/* ▼並び替えの装飾 */
+/* -------------------- */
+ul.sort ul {
+   display: none;       /* ★1:標準では非表示にする */
+   margin: 0px;         /* ★2:並び替え外側の余白(ゼロ) */
+   padding: 0px;        /* ★3:並び替え内側の余白(ゼロ) */
+   position: absolute;  /* ★4:絶対配置にする */
+}
+
+/* ---------------------------------- */
+/* ▼並び替えがある場合に開く処理 */   /* ※並び替えが1階層しか存在しない場合の記述 */
+/* ---------------------------------- */
+ul.sort li:hover ul {
+   display: block;      /* ★5:マウスポインタが載っている項目の内部にあるリストを表示する */
+}
+
+ul.sort ul li {   /* ※A */
+   width: 250px;               /* 並び替え1項目の横幅(135px) */
+   border-top: 1px solid white; /* 項目上側の枠線(ピンク色で1pxの実線) */
+}
+ul.sort ul li a {   /* ※B */
+   line-height: 35px;   /* 並び替え1項目の高さ(35px) */
+   text-align: left;    /* 文字列の配置(左寄せ) */
+   padding-left: 5px;   /* 文字列前方の余白(5px) */
+   font-weight: normal; /* 太字にはしない */
+}
+ul.sort ul li a:hover {   /* ※C */
+   background-color: #eb9dc5; /* 並び替え項目にマウスが載ったときの背景色() */
+   color: #f01127;            /* 並び替え項目にマウスが載ったときの文字色(濃い緑色) */
+}
+
+//チャット(トーク)画面のレイアウト
+.line__container {
+  padding:0;
+  background: #7494c0;
+  overflow: hidden;
+  // max-width: 400px; ←コメントアウト
+  margin: 20px auto;
+  font-size: 80%;
+}
+
+.freeword{
+  float: right; /* フリーワード*/
+}
+
+.input2 {
+  width: 70px;
+  height: 1.2em;
+}
+
+.profile {
+    height: 2.4em;
+    width: 100%;
+    padding: 0 16px;
+    border-radius: 4px;
+    float: right;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.profile:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+
+.age {
+  font-size: 30px;
+  width: 500px;
+  height: 2.5em;
+  padding: 10px;
+  position: relative; left: 350px;
+  boder: sorid;
+  border-radius: 30px;
+  background: -moz-linear-gradient(#ffb03c, #ff708d);
+  background: -webkit-linear-gradient(#ffb03c, #ff708d);
+  background: linear-gradient(to right, #ffb03c, #ff708d);
+  color: #FFF;
+}
+
+.jender {
+  font-size: 30px;
+  width: 500px;
+  height: 8em;
+  padding: 50px;
+  position: relative; left: 350px;
+  border-radius: 30px;
+  background: -moz-linear-gradient(#ffb03c, #ff708d);
+  background: -webkit-linear-gradient(#ffb03c, #ff708d);
+  background: linear-gradient(to right, #32EEFF, #ff708d);
+  color: #FFF;
+}
+
+.check1 {
+  transform: scale(1.5);
+}
+
+.point { 　　/* ポイント購入・月額購入画面 */
+  font-size: 30px;
+  background-color:  #FFAD90;
+  margin-top: 1em;
+  border-radius: 15px;
+  padding: 12px;
+  height: 20em;
+}
+
+.freeplan1 {
+  background: #f1e767;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f1e767), to(#feb645));
+  background: -webkit-linear-gradient(top, #f1e767 0%, #feb645 100%);
+  background: linear-gradient(to bottom, #FFEBCD 0%, #FFA07A 100%);
+  border-radius: 10px;
+}
+
+.freeplan1:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#f1e767), to(#feb645));
+  background: -webkit-linear-gradient(bottom, #f1e767 0%, #feb645 100%);
+  background: linear-gradient(to top, #f1e767 0%, #feb645 100%);
+}
+
+.member {
+  font-size:17px;
+  background-color:  #FF8856;
+  margin-top: 1em;
+  border-radius: 15px;
+  padding: 12px;
+  position: relative; left: 700px; bottom:335px
+}
+
+.year2 {
+  font-size: 30px;
+  width: 500px;
+  height: 2.5em;
+  padding: 10px;
+  position: relative; left: 350px;
+  border-radius: 30px;
+  background: -moz-linear-gradient(#ffb03c, #ff708d);
+  background: -webkit-linear-gradient(#ffb03c, #ff708d);
+  background: linear-gradient(to right, #32EEFF, #ff708d);
+  color: #FFF;
+}
+
+gender{
+  padding-top: 10px;
+}
+
+ul.select_area {  /* 都道府県　*/
+  font-size: 18px;
+  width: 1300px;
+  height: 2.5em;
+  display: flex;
+
+}
+
+.lol {
+  float: right;
+}
+
+.altair {
+  font-size: 30px;
+  width: 500px;
+  height: 2.5em;
+  padding: 10px;
+  margin-top: 20px;
+  position: relative; left: 500px;
+  border-radius: 30px;
+  background: -moz-linear-gradient(#ffb03c, #ff708d);
+  background: -webkit-linear-gradient(#ffb03c, #ff708d);
+  background: linear-gradient(to right, #32EEFF, #ff708d);
+  color: #FFF;
 }
 
 /* -------------------- */

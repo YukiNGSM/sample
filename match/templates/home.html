@@ -19,6 +19,7 @@
                     <li><input type="radio" name="sort" value="iine">いいね数</li>
                     <li><input type="radio" name="sort" value="new">新着順</li>
                     <li><input type="radio" name="sort" value="match_counts">マッチ回数</li>
+                      <button><a href="{% url 'match:home' %}">並び替え</a></button>
                   {% if user.is_authenticated %}
                   <li class="nav-item">
                       <a href="{% url 'match:member'%}">月額会員に加入する</a>
