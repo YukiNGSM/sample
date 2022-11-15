@@ -13,33 +13,20 @@
     <div class="p-5">
       <div class="col-lg-6">
             <div class="portfolio-box-caption">
-                <FORM>
+                <form method="POST">
                     {% csrf_token %}
                 <h1>ポイント購入</h1><br>
                 <ul class="point_free">
                     <li>ポイント料金(200円)はカード引き落とし日に引き落としされます。</li>
                     <li>ポイント反映日は、購入された日から反映し お使いいただけます。</li>
                     <li>ポイント購入をキャンセルしたい場合は、(メニュー→お問い合わせ)から詳細を記載して送信していただいて 対応させていただきます。</li>
-                    <button name="member"><a href="{% url 'match:member' %}">おすすめ　月額会員に加入する</a></button>
-                    <button onclick="alertfunction">購入する</button>
+                    <button name="member"><a href="{% url 'match:member' %}">おすすめ 月額会員に加入する</a></button>
+                    <button submit="">購入する</button>
                 </ul>
-
-<!--                    if (alertfunction) {-->
-<!--                        alert('ポイント購入しました。')-->
-<!--                    }-->
-<!--                    else {-->
-<!--                        alert('ポイント購入に失敗しました。')-->
-<!--                    }-->
-                </FORM>
+                </form>
             </div>
       </div>
     </div>
   </div>
 </section>
-                <button onclick="alertfunction">あああ購入する</button>
-                <script>
-                    function alertfunction() {
-                        alert('ポイント購入しました。');
-                    }
-                </script>
 {% endblock %}

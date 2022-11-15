@@ -203,8 +203,8 @@ ACCOUNT_LOGOUT_ON_GET = True
 # # django-allauthが送信するメール件名に自動付与される接頭辞をブランクにする設定
 # ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 #
-# # デフォルトのメール送信先の設定
-# DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL')
+# デフォルトのメール送信先の設定
+DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL')
 
 MEDIA_URL = '/media/'
 
@@ -218,3 +218,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
 #     "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
 # ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

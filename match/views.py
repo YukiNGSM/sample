@@ -11,6 +11,10 @@ import psycopg2
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+import logging
+logger = logging.getLogger(__name__)
+from django.contrib import messages
+
 
 class ChatView(generic.TemplateView):
     template_name = "chat.html"

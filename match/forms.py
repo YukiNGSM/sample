@@ -6,6 +6,7 @@ from django.core.mail import EmailMessage
 class InquiryForm(forms.Form):
     name = forms.CharField(label='お名前', max_length=30)
     email = forms.EmailField(label='メールアドレス')
+    title = forms.CharField(label='件名')
     message = forms.CharField(label='お問い合わせ内容', widget=forms.Textarea)
 
     def __init__(self, *args, **kwargs):
@@ -16,6 +17,10 @@ class InquiryForm(forms.Form):
 
         self.fields['email'].widget.attrs['class'] = 'form-control col-11'
         self.fields['email'].widget.attrs['placeholder'] = 'メールアドレスをここに入力してください。'
+
+        self.fields['title'].widget.attrs['class'] = 'form-control col-11'
+        self.fields['title'].widget.attrs['placeholder'] = '件名をここに入力してください。'
+
 
         self.fields['message'].widget.attrs['class'] = 'form-control col-12'
         self.fields['message'].widget.attrs['placeholder'] = 'お問い合わせ内容をここに入力してください。'
